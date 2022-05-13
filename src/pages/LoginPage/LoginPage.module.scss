@@ -1,0 +1,52 @@
+@import '../../sass/variables.scss';
+.main{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.loginpanel{
+
+    border:3px solid white;
+    border-radius: 30px;
+    margin: 0 auto;
+    text-align: center;
+    h2{
+        font-family: snake-font;
+        color: black;
+        font-size: 32px;
+    }
+    img{
+        width: 300px;
+    }
+}
+
+.endpoint{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_login{
+    width:150px;
+    height:50px;
+    margin:10px !important;
+}
+
+.loginpanel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px 0px;
+}
+
+.button{
+    
+}
+
+.image_style{
+    
+}
