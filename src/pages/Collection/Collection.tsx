@@ -53,7 +53,7 @@ export const Collection = ({ wax, walletSession, Assets, Account, setAssets, Con
     <div className="main" style={{padding:"0 8% 0 8%"}}>
     <Sidebar Account = {Account}/>
     <div style = {{overflow: "auto", width: "100%"}}>
-    <HeaderAsset Consumables = {Consumables} Thorium = {Thorium} Oxygen = {Oxygen}/>
+    <HeaderAsset wax={wax} walletSession={walletSession} account = {Account} Consumables = {Consumables} Thorium = {Thorium} Oxygen = {Oxygen}/>
 
     <main className={styles.contents} >
       <h1 className="align-center">Collection (if the player has our NFTs)</h1>

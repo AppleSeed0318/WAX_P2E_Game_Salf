@@ -68,10 +68,10 @@ export const App = () => {
               Consumables = {Consumables} 
               Thorium = {Thorium} 
             />} />
-            <Route path="/territory" element={<Territory Oxygen = {Oxygen} Consumables = {Consumables} Thorium = {Thorium} Account = {Account}/>} />
-            <Route path="/evolution" element={<Evolution Oxygen = {Oxygen} Consumables = {Consumables} Thorium = {Thorium} Account = {Account}/>} />
-            <Route path="/breeding" element={<Breeding Oxygen = {Oxygen} Consumables = {Consumables} Thorium = {Thorium} Account = {Account}/>} />
-            <Route path="/bank" element={<Bank Oxygen = {Oxygen} Consumables = {Consumables} Thorium = {Thorium} Account = {Account}/>} />
+            <Route path="/territory" element={<Territory wax = {wax} walletSession={walletSession} Account = {Account} Oxygen = {Oxygen} Consumables = {Consumables} Thorium = {Thorium} />} />
+            <Route path="/evolution" element={<Evolution wax = {wax} walletSession={walletSession} Account = {Account} Oxygen = {Oxygen} Consumables = {Consumables} Thorium = {Thorium} />} />
+            <Route path="/breeding" element={<Breeding wax = {wax} walletSession={walletSession} Account = {Account} Oxygen = {Oxygen} Consumables = {Consumables} Thorium = {Thorium} />} />
+            <Route path="/bank" element={<Bank wax = {wax} walletSession={walletSession} Account = {Account} Oxygen = {Oxygen} Consumables = {Consumables} Thorium = {Thorium} />} />
           </Routes>
       </BrowserRouter>
       {/*

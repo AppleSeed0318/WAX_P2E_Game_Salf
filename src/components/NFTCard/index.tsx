@@ -172,6 +172,22 @@ const NFTCard = ({ state, wax, walletSession, uri, name, account, assetID, Asset
     try {
       const nftNames = ["Canis", "Odonata", "Hydrozoa"];
       let selectNFTkind = nftNames[Math.floor(Math.random() * 3)];
+      let balance_Oxygen, balance_Consumables, balance_Thorium;
+      const original_balance = await wax.rpc.get_table_rows({
+        json: true,
+        code: contract_owner_name,
+        scope: contract_owner_name,
+        table: "peoplelist",
+        reverse: false,
+        show_payer: false
+      });
+      for (let i = 0; i < original_balance.rows.length; i++) {
+        if (original_balance.rows[i].user == account) {
+          balance_Oxygen =  original_balance.rows[i].balance_Oxygen;
+          balance_Consumables = original_balance.rows[i].balance_Consumables;
+          balance_Thorium = original_balance.rows[i].balance_Thorium;
+        }
+      }
       const result = await walletSession.transact({
         actions: [{
           account: contract_owner_name,

@@ -39,7 +39,6 @@ export const LoginPage = ({ wax, setWalletSession, setAccount, setAssets, setOxy
 
   const collection = "mudplanetoff";
   const dapp = "mudplanetoff";
-
   let totalNFTs: any = [];
 
   const main = async () => {
@@ -66,7 +65,7 @@ export const LoginPage = ({ wax, setWalletSession, setAccount, setAssets, setOxy
 
 
   const login = async () => {
-
+    
     try {
       if (!loggedIn) {
         console.log("str");
@@ -87,7 +86,6 @@ export const LoginPage = ({ wax, setWalletSession, setAccount, setAssets, setOxy
         let isWork = await wax.rpc
           .get_currency_balance("eosio.token", wallet1_userAccount, "wax")
           .then((res: any) => {
-            console.log("geeg", res[0]);
             // setBalance(res[0]);
             return true;
           })
@@ -115,7 +113,7 @@ export const LoginPage = ({ wax, setWalletSession, setAccount, setAssets, setOxy
           }
         }
         if (isflag) {
-          const result = await wallet_session.transact({
+          const result = await wax.api.transact({
             actions: [{
               account: contract_owner_name,
               name: 'addperson',
@@ -135,9 +133,8 @@ export const LoginPage = ({ wax, setWalletSession, setAccount, setAssets, setOxy
 
       }
 
-    } catch (e) 
-    {
-    }
+    } catch (e) {
+  }
 }
 
 const GetAssets = async () => {
@@ -171,34 +168,34 @@ const PopulateData = async (assets: any) => {
 
 }
 
-  async function wallet_login() {
-    var wallet_userAccount;
-    const transport = new AnchorLinkBrowserTransport();
-    const anchorLink = new AnchorLink({
-      transport,
-      chains: [{
-        chainId: '1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4',
-        nodeUrl: 'https://wax.greymass.com',
-      }],
-    }); 
-    if (walletType == "Anchor") {
-      var sessionList = await anchorLink.listSessions(dapp);
-      if (sessionList && sessionList.length > 0) {
-        wallet_session = await anchorLink.restoreSession(dapp);
-      } else {
-        wallet_session = (await anchorLink.login(dapp)).session;
-      }
-      wallet_userAccount = String(wallet_session.auth).split("@")[0];
-      let auth = String(wallet_session.auth).split("@")[1];
-      let anchorAuth = auth;
+async function wallet_login() {
+  var wallet_userAccount;
+  const transport = new AnchorLinkBrowserTransport();
+  const anchorLink = new AnchorLink({
+    transport,
+    chains: [{
+      chainId: '1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4',
+      nodeUrl: 'https://wax.greymass.com',
+    }],
+  }); 
+  if (walletType == "Anchor") {
+    var sessionList = await anchorLink.listSessions(dapp);
+    if (sessionList && sessionList.length > 0) {
+      wallet_session = await anchorLink.restoreSession(dapp);
     } else {
-      wallet_userAccount = await wax.login();
-      wallet_session = wax.api;
-      let anchorAuth = "active";
+      wallet_session = (await anchorLink.login(dapp)).session;
     }
-    setWalletSession(wallet_session);
-    return wallet_userAccount;
+    wallet_userAccount = String(wallet_session.auth).split("@")[0];
+    let auth = String(wallet_session.auth).split("@")[1];
+    let anchorAuth = auth;
+  } else {
+    wallet_userAccount = await wax.login();
+    wallet_session = wax.api;
+    let anchorAuth = "active";
   }
+  setWalletSession(wallet_session);
+  return wallet_userAccount;
+}
 
 const logout = async () => {
   loggedIn = false;

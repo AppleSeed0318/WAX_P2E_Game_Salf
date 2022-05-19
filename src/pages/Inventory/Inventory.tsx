@@ -188,11 +188,11 @@ export const Inventory = ({
     var id_list = [];
     id_list.push(asset_id);
 
-    if (!wax.api || Account == "") {
+    if (!walletSession || Account == "") {
       console.log('* Login first *');
     }
     try {
-      const result = await wax.api.transact({
+      const result = await walletSession.transact({
         actions: [{
           account: "atomicassets",
           name: 'transfer',
@@ -229,11 +229,11 @@ export const Inventory = ({
     var id_list = [];
     id_list.push(parseInt(asset_id));
 
-    if (!wax.api || Account == "") {
+    if (!walletSession || Account == "") {
       console.log('* Login first *');
     }
     try {
-      const result = await wax.api.transact({
+      const result = await walletSession.transact({
         actions: [{
           account: contract_owner_name,
           name: 'unstake',
@@ -263,11 +263,11 @@ export const Inventory = ({
     var id_list = [];
     id_list.push(parseInt(asset_id));
 
-    if (!wax.api || Account == "") {
+    if (!walletSession || Account == "") {
       console.log('* Login first *');
     }
     try {
-      const result = await wax.api.transact({
+      const result = await walletSession.transact({
         actions: [{
           account: contract_owner_name,
           name: 'claim',
@@ -294,11 +294,11 @@ export const Inventory = ({
 
   const randomWinner = async () => {
 
-    if (!wax.api || Account == "") {
+    if (!walletSession || Account == "") {
       console.log('* Login first *');
     }
     try {
-      const result = await wax.api.transact({
+      const result = await walletSession.transact({
         actions: [{
           account: contract_owner_name,
           name: 'checksolowin',
@@ -327,7 +327,7 @@ export const Inventory = ({
     <div className="main" style={{padding:"0 8% 0 8%"}}>
       <Sidebar Account={Account} />
       <div style={{ overflow: "auto", width: "100%" }}>
-        <HeaderAsset Consumables={Consumables} Thorium={Thorium} Oxygen={Oxygen} />
+        <HeaderAsset wax={wax} walletSession={walletSession} account = {Account} Consumables={Consumables} Thorium={Thorium} Oxygen={Oxygen} />
         <main className={styles.contents} >
           <h1 className="align-center">Collection (if the player has no NFTs staked)</h1>
           <div className={styles.page_contents}>
