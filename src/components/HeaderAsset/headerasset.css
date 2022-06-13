@@ -1,0 +1,15 @@
+.asset-header{
+  margin: auto;
+  width: 50%;
+  padding: 30px;
+}
+
+.asset-header ul li {
+    font-size: 28px;
+    text-align: center;
+}
+
+.asset-header ul {
+    display: flex;
+    justify-content: space-between;
+}

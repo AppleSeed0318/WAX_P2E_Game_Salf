@@ -1,0 +1,30 @@
+.sidebar{
+  width: 300px;
+  padding: 10px;
+}
+
+.sidebar .logo{
+	margin-top: 30px;
+  text-align: center;
+}
+
+.sidebar ul li{
+	font-size: 40px;
+}
+
+.sidebar .category {
+	margin-top: 40px;
+	color: black;
+	text-align: center;
+}
+
+.sidebar ul li a {
+	color: black;
+}
+
+.sidebar ul li a:hover {
+	color: white;
+}
+.category ul li {
+	margin-top: 30px;
+}
